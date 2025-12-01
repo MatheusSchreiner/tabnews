@@ -27,8 +27,35 @@ async function create(userId) {
   }
 }
 
+async function findOneValidByToken(sessionToken) {
+  const sessionFound = await runSelectQuery(sessionToken);
+
+  return sessionFound;
+
+  async function runSelectQuery(sessionToken) {
+    const results = await database.query({
+      text: `
+        SELECT
+          *
+        FROM
+          sessions
+        WHERE
+          token = $1
+        AND
+          expires_at > NOW()
+        LIMIT
+          1  
+        ;`,
+      values: [sessionToken],
+    });
+
+    return results.rows[0];
+  }
+}
+
 const session = {
   create,
+  findOneValidByToken,
   EXPIRATION_IN_MILLISECONDS,
 };
 
