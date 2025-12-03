@@ -83,6 +83,7 @@ describe("Use case: Registration Flow (all successful)", () => {
     const activatedUser = await user.findOneByUsername("RegistrationFlow");
     expect(activatedUser.features).toEqual(["create:session"]);
   });
+
   test("Login", async () => {
     const createSessionResponse = await fetch(
       "http://localhost:3000/api/v1/sessions",
