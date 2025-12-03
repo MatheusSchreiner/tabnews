@@ -1,5 +1,5 @@
 function getOrigin() {
-  if (["teste", "development"].includes(process.env.NODE_ENV)) {
+  if (["test", "development"].includes(process.env.NODE_ENV)) {
     return "http://localhost:3000";
   }
 
