@@ -33,6 +33,7 @@ describe("Use case: Registration Flow (all successful)", () => {
       username: "RegistrationFlow",
       email: "registration.flow@curso.dev",
       password: createUserResponseBody.password,
+      features: [],
       created_at: createUserResponseBody.created_at,
       updated_at: createUserResponseBody.updated_at,
     });
